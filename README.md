@@ -8,10 +8,11 @@
 
 ## 🐧 Supported Distros
 
-| Distro family | Examples | Script | Package manager |
+| Distro | Examples | Script | Package manager |
 |---|---|---|---|
 | Arch-based | Arch Linux, Manjaro, EndeavourOS | `arch.sh` | `pacman` |
-| Debian-based | Ubuntu, Debian, Kali, Mint, Pop!_OS | `ubuntu.sh` | `apt` |
+| Ubuntu-based | Ubuntu, Kali, Mint, Pop!_OS | `ubuntu.sh` | `apt` |
+| Debian | Debian | `debian.sh` | `apt` |
 
 > More distro scripts are planned. Each script exits immediately if the expected package manager is not found.
 
@@ -57,15 +58,20 @@ git clone https://github.com/clebertmarctyson/zsh-linux-setup.git
 cd zsh-linux-setup
 ```
 
-Pick the script that matches your distro:
+Or run directly with one command:
 
 ```bash
 # Arch-based
-chmod +x arch.sh && ./arch.sh
+curl -fsSL https://raw.githubusercontent.com/clebertmarctyson/zsh-linux-setup/main/arch.sh | bash && source ~/.zshrc
 
-# Debian-based (Ubuntu, Kali, Mint, Pop!_OS…)
-chmod +x ubuntu.sh && ./ubuntu.sh
+# Ubuntu-based (Kali, Mint, Pop!_OS…)
+curl -fsSL https://raw.githubusercontent.com/clebertmarctyson/zsh-linux-setup/main/ubuntu.sh | bash && source ~/.zshrc
+
+# Debian
+curl -fsSL https://raw.githubusercontent.com/clebertmarctyson/zsh-linux-setup/main/debian.sh | bash && source ~/.zshrc
 ```
+
+> **Note:** `exec zsh` does not work when the script is piped via `curl | bash`. Use `source ~/.zshrc` instead to reload your config in the current session.
 
 ---
 
