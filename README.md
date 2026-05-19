@@ -2,7 +2,18 @@
 
 > One-shot Zsh power environment for Linux — Powerlevel10k, Oh My Zsh, smart plugins, nvm, pnpm, and IP tools, all wired up automatically.
 >
-> Supports **Arch Linux** and **Ubuntu/Debian**.
+> Pick the script for your distro and run it. More distros coming soon.
+
+---
+
+## 🐧 Supported Distros
+
+| Distro family | Examples | Script | Package manager |
+|---|---|---|---|
+| Arch-based | Arch Linux, Manjaro, EndeavourOS | `arch.sh` | `pacman` |
+| Debian-based | Ubuntu, Debian, Kali, Mint, Pop!_OS | `ubuntu.sh` | `apt` |
+
+> More distro scripts are planned. Each script exits immediately if the expected package manager is not found.
 
 ---
 
@@ -38,17 +49,6 @@
 
 ---
 
-## 🖥️ Requirements
-
-| Distro | Script | Package manager |
-|---|---|---|
-| Arch Linux / Manjaro / EndeavourOS | `arch.sh` | `pacman` |
-| Ubuntu / Debian / Mint / Pop!_OS | `ubuntu.sh` | `apt` |
-
-> Each script exits immediately if the expected package manager is not found.
-
----
-
 ## 🚀 Usage
 
 ```bash
@@ -57,13 +57,13 @@ git clone https://github.com/clebertmarctyson/zsh-linux-setup.git
 cd zsh-linux-setup
 ```
 
-**Arch Linux:**
-```bash
-chmod +x arch.sh && ./arch.sh
-```
+Pick the script that matches your distro:
 
-**Ubuntu / Debian:**
 ```bash
+# Arch-based
+chmod +x arch.sh && ./arch.sh
+
+# Debian-based (Ubuntu, Kali, Mint, Pop!_OS…)
 chmod +x ubuntu.sh && ./ubuntu.sh
 ```
 
@@ -73,13 +73,10 @@ chmod +x ubuntu.sh && ./ubuntu.sh
 
 After running the script, set your terminal font to **MesloLGS NF**.
 
-**Konsole (Arch):**
-1. **Settings** → **Edit Current Profile...** → **Appearance** → **Choose...**
-2. Search for `MesloLGS NF` → select → **OK** → **Apply**
-
-**GNOME Terminal (Ubuntu):**
-1. **Edit** → **Preferences** → select your profile → **Text** tab
-2. Enable **Custom font** → click the font button → search for `MesloLGS NF` → **Select**
+The exact steps depend on your terminal emulator, but the general flow is:
+1. Open your terminal's **Preferences** or **Profile settings**
+2. Navigate to the **Font** or **Appearance** section
+3. Enable a custom font and select **MesloLGS NF**
 
 If the font doesn't appear, run:
 ```bash
@@ -102,7 +99,6 @@ This launches the Powerlevel10k interactive setup wizard.
 
 1. **Install Zsh** via the distro package manager if not present
 2. **Install system packages** — `git`, `curl`, `thefuck`, GitHub CLI (`gh`)
-   - Ubuntu: adds the official `cli.github.com` apt repo before installing `gh`
 3. **Install Oh My Zsh** non-interactively (`RUNZSH=no CHSH=no`)
 4. **Patch `.bashrc`** to redirect interactive sessions to Zsh safely
 5. **Install nvm** → latest Node.js → pnpm → `ip-navigator-cli`
