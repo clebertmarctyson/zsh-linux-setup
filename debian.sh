@@ -43,13 +43,14 @@ sudo apt update -qq
 sudo apt install -y \
     git \
     curl \
-    python3-pip \
+    pipx \
     fontconfig
 
 echo "  → Removing apt thefuck if present (incompatible with Python 3.12+)..."
 sudo apt remove thefuck -y 2>/dev/null || true
-echo "  → Installing thefuck via pip..."
-pip3 install thefuck --upgrade --break-system-packages
+echo "  → Installing thefuck via pipx..."
+pipx install thefuck
+pipx ensurepath
 
 # GitHub CLI — add the official repo if gh is not already present
 if ! command -v gh >/dev/null; then
@@ -280,6 +281,9 @@ case ":$PATH:" in
   *":$PNPM_HOME/bin:"*) ;;
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
+
+# ── pipx ──────────────────────────────────────────────────────────────────────
+export PATH="$HOME/.local/bin:$PATH"
 
 # ── thefuck ───────────────────────────────────────────────────────────────────
 if command -v thefuck >/dev/null && thefuck --version >/dev/null 2>&1; then
