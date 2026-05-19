@@ -269,7 +269,7 @@ bindkey '^[[B' history-substring-search-down
 
 # ── History grep (hgrep <word> → list, hgrep <word> --list → paged view) ───────
 function hgrep() {
-  if [[ "$2" == "--list" ]]; then
+  if [[ "$2" == "--list" || "$2" == "-l" ]]; then
     fc -l 1 | grep "$1" | less
   else
     fc -l 1 | grep "$1"
