@@ -261,7 +261,7 @@ case ":$PATH:" in
 esac
 
 # ── thefuck ───────────────────────────────────────────────────────────────────
-if command -v thefuck >/dev/null; then
+if command -v thefuck >/dev/null && thefuck --version >/dev/null 2>&1; then
   eval $(thefuck --alias)
 fi
 
