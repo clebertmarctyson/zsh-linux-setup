@@ -43,7 +43,8 @@ sudo apt update -qq
 sudo apt install -y \
     git \
     curl \
-    thefuck
+    thefuck \
+    fontconfig
 
 # GitHub CLI — add the official repo if gh is not already present
 if ! command -v gh >/dev/null; then
