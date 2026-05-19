@@ -188,11 +188,11 @@ for style in "Regular" "Bold" "Italic" "Bold%20Italic"; do
     fi
 done
 
-if command -v fc-cache >/dev/null; then
+if [ -x /usr/bin/fc-cache ]; then
     echo "  → Refreshing font cache..."
-    fc-cache -f > /dev/null
+    /usr/bin/fc-cache -f > /dev/null
 else
-    echo "  ⏭ fc-cache not found, skipping font cache refresh."
+    echo "  ⏭ fc-cache not available, skipping font cache refresh."
 fi
 
 # ─────────────────────────────────────────────
