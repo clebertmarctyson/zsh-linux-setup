@@ -43,8 +43,15 @@ sudo apt update -qq
 sudo apt install -y \
     git \
     curl \
-    thefuck \
+    python3-pip \
     fontconfig
+
+if ! command -v thefuck >/dev/null; then
+    echo "  → Installing thefuck via pip..."
+    pip3 install thefuck --upgrade --break-system-packages
+else
+    echo "  ⏭ thefuck already installed, skipping."
+fi
 
 # GitHub CLI — add the official repo if gh is not already present
 if ! command -v gh >/dev/null; then
@@ -278,7 +285,9 @@ case ":$PATH:" in
 esac
 
 # ── thefuck ───────────────────────────────────────────────────────────────────
-eval $(thefuck --alias)
+if command -v thefuck >/dev/null; then
+  eval $(thefuck --alias)
+fi
 
 # ── History substring search keybindings ──────────────────────────────────────
 bindkey '^[[A' history-substring-search-up

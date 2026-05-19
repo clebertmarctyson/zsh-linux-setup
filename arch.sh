@@ -261,7 +261,9 @@ case ":$PATH:" in
 esac
 
 # ── thefuck ───────────────────────────────────────────────────────────────────
-eval $(thefuck --alias)
+if command -v thefuck >/dev/null; then
+  eval $(thefuck --alias)
+fi
 
 # ── History substring search keybindings ──────────────────────────────────────
 bindkey '^[[A' history-substring-search-up
