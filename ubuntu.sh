@@ -200,6 +200,10 @@ fi
 # ─────────────────────────────────────────────
 echo ""
 echo "▶ [8/8] Writing ~/.zshrc..."
+if [ -f "$HOME/.zshrc" ]; then
+    cp "$HOME/.zshrc" "$HOME/.zshrc.bak"
+    echo "  → Backed up existing ~/.zshrc to ~/.zshrc.bak"
+fi
 
 cat << 'EOF' > ~/.zshrc
 # ── Powerlevel10k instant prompt (must stay at the very top) ──────────────────
@@ -275,6 +279,19 @@ esac
 
 # ── thefuck ───────────────────────────────────────────────────────────────────
 eval $(thefuck --alias)
+
+# ── History substring search keybindings ──────────────────────────────────────
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# ── History grep (h <word> → list, h <word> --list → paged view) ──────────────
+function h() {
+  if [[ "$2" == "--list" ]]; then
+    fc -l 1 | grep "$1" | less
+  else
+    fc -l 1 | grep "$1"
+  fi
+}
 
 # ── Locale ────────────────────────────────────────────────────────────────────
 export LANG=en_US.UTF-8
