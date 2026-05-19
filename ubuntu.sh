@@ -107,16 +107,23 @@ nvm install node
 nvm use node
 nvm alias default node
 
-echo "  → Installing pnpm..."
-npm install -g pnpm
-pnpm setup
+export PNPM_HOME="$HOME/.local/share/pnpm"
+if ! command -v pnpm >/dev/null; then
+    echo "  → Installing pnpm..."
+    curl -fsSL https://get.pnpm.io/install.sh | env SHELL=bash sh -
+else
+    echo "  ⏭ pnpm already installed, skipping."
+fi
 
 # Source pnpm into current PATH so we can use it immediately
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export PATH="$PNPM_HOME/bin:$PATH"
 
-echo "  → Installing ip-navigator-cli..."
-pnpm add -g --allow-build=esbuild ip-navigator-cli
+if ! command -v ipnav >/dev/null; then
+    echo "  → Installing ip-navigator-cli..."
+    pnpm add -g --allow-build=esbuild ip-navigator-cli
+else
+    echo "  ⏭ ip-navigator-cli already installed, skipping."
+fi
 
 # ─────────────────────────────────────────────
 # 6. Clone third-party plugins & Powerlevel10k
@@ -257,8 +264,8 @@ export NVM_DIR="$HOME/.nvm"
 # ── pnpm ──────────────────────────────────────────────────────────────────────
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 
 # ── thefuck ───────────────────────────────────────────────────────────────────
