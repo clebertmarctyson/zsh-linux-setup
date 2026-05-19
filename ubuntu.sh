@@ -188,8 +188,12 @@ for style in "Regular" "Bold" "Italic" "Bold%20Italic"; do
     fi
 done
 
-echo "  → Refreshing font cache..."
-fc-cache -f > /dev/null
+if command -v fc-cache >/dev/null; then
+    echo "  → Refreshing font cache..."
+    fc-cache -f > /dev/null
+else
+    echo "  ⏭ fc-cache not found, skipping font cache refresh."
+fi
 
 # ─────────────────────────────────────────────
 # 8. Write .zshrc
