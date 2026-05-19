@@ -253,7 +253,6 @@ plugins=(
   copyfile
   dirhistory
   safe-paste
-  thefuck
 
   # ── Tools ─────────────────────────
   web-search
