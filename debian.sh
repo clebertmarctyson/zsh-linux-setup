@@ -48,12 +48,8 @@ sudo apt install -y \
 
 echo "  → Removing apt thefuck if present (incompatible with Python 3.12+)..."
 sudo apt remove thefuck -y 2>/dev/null || true
-if ! pipx list 2>/dev/null | grep -q thefuck; then
-    echo "  → Installing thefuck via pipx..."
-    pipx install thefuck
-else
-    echo "  ⏭ thefuck already installed via pipx, skipping."
-fi
+echo "  → Installing thefuck via pipx..."
+pipx install thefuck --force
 pipx ensurepath >/dev/null
 
 # GitHub CLI — add the official repo if gh is not already present
