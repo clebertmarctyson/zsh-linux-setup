@@ -267,8 +267,8 @@ eval $(thefuck --alias)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# ── History grep (h <word> → list, h <word> --list → paged view) ──────────────
-function h() {
+# ── History grep (hgrep <word> → list, hgrep <word> --list → paged view) ───────
+function hgrep() {
   if [[ "$2" == "--list" ]]; then
     fc -l 1 | grep "$1" | less
   else
