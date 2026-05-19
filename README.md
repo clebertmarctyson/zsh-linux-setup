@@ -11,8 +11,7 @@
 | Distro | Examples | Script | Package manager |
 |---|---|---|---|
 | Arch-based | Arch Linux, Manjaro, EndeavourOS | `arch.sh` | `pacman` |
-| Ubuntu-based | Ubuntu, Kali, Mint, Pop!_OS | `ubuntu.sh` | `apt` |
-| Debian | Debian | `debian.sh` | `apt` |
+| Debian-based | Debian, Ubuntu, Kali, Mint, Pop!_OS | `debian.sh` | `apt` |
 
 > More distro scripts are planned. Each script exits immediately if the expected package manager is not found.
 
@@ -64,10 +63,7 @@ Or run directly with one command:
 # Arch-based
 curl -fsSL https://raw.githubusercontent.com/clebertmarctyson/zsh-linux-setup/main/arch.sh | bash && source ~/.zshrc
 
-# Ubuntu-based (Kali, Mint, Pop!_OS…)
-curl -fsSL https://raw.githubusercontent.com/clebertmarctyson/zsh-linux-setup/main/ubuntu.sh | bash && source ~/.zshrc
-
-# Debian
+# Debian-based (Ubuntu, Kali, Mint, Pop!_OS…)
 curl -fsSL https://raw.githubusercontent.com/clebertmarctyson/zsh-linux-setup/main/debian.sh | bash && source ~/.zshrc
 ```
 
