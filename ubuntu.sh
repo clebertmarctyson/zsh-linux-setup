@@ -116,11 +116,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 echo "  → Installing ip-navigator-cli..."
-pnpm add -g ip-navigator-cli
-
-# Approve esbuild build scripts (required by ip-navigator-cli dependency)
-echo "  → Approving esbuild build scripts..."
-echo "esbuild" | pnpm approve-builds -g || true
+pnpm add -g --allow-build=esbuild ip-navigator-cli
 
 # ─────────────────────────────────────────────
 # 6. Clone third-party plugins & Powerlevel10k
